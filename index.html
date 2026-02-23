@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refer Europe - Create Your Website in a Day</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <style>
+      * {
+        font-family: "DM Serif Text", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #0a0a0a;
+      }
+      .gold-text { color: #d4af37; }
+      .border-gold { border-color: #d4af37; }
+      .bg-gold { background-color: #d4af37; }
+      .text-gold { color: #d4af37; }
+      .hover-gold:hover { color: #d4af37; transition: color 0.2s; }
+      .card-black {
+        background: #111111;
+        border: 1px solid #222;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-black:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 30px -10px rgba(212, 175, 55, 0.15);
+        border-color: #d4af37;
+      }
+
+      /* Navbar: slide from top on load */
+      @keyframes slideDown {
+        from { transform: translateY(-100%); opacity: 0; }
+        to   { transform: translateY(0);     opacity: 1; }
+      }
+      #navbar {
+        animation: slideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      }
+      #navbar.nav-hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+      }
+      #navbar.nav-visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Mobile menu: compact dropdown from top-right */
+      #mobile-menu {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+        pointer-events: none;
+        transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      #mobile-menu.open {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+
+      /* Hamburger icon animation */
+      #hamburger-btn i {
+        transition: transform 0.3s ease;
+      }
+      #hamburger-btn.active i {
+        transform: rotate(90deg);
+      }
+    </style>
+  </head>
+
+  <body class="text-gray-200 antialiased">
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav id="navbar" class="border-b border-gray-800 bg-black/80 backdrop-blur-sm sticky top-0 z-50">
+      <div class="relative max-w-7xl h-[10vh] mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="bg-[url('/images/logoeurope.png')] bg-contain bg-center bg-no-repeat w-[120px] h-[60px] mt-2"></div>
+
+        <!-- Desktop Menu -->
+        <div class="space-x-8 text-sm hidden md:block">
+          <a href="#" class="hover:text-[#d4af37] transition">Home</a>
+          <a href="#why" class="hover:text-[#d4af37] transition">Why</a>
+          <a href="#steps" class="hover:text-[#d4af37] transition">Steps</a>
+          <a href="#target" class="hover:text-[#d4af37] transition">For you</a>
+        </div>
+
+        <!-- Hamburger Button -->
+        <button id="hamburger-btn" class="block md:hidden text-white text-2xl focus:outline-none z-50 w-10 h-10 flex items-center justify-center" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Mobile Menu: compact, right-aligned dropdown -->
+        <div id="mobile-menu" class="absolute right-6 top-full mt-2 w-48 bg-[#111] border border-gray-800 rounded-xl shadow-2xl shadow-black/50 md:hidden">
+          <div class="flex flex-col py-3">
+            <a href="#" class="hover:text-[#d4af37] hover:bg-white/5 transition px-5 py-3 text-sm mobile-link">Home</a>
+            <a href="#why" class="hover:text-[#d4af37] hover:bg-white/5 transition px-5 py-3 text-sm mobile-link">Why</a>
+            <a href="#steps" class="hover:text-[#d4af37] hover:bg-white/5 transition px-5 py-3 text-sm mobile-link">Steps</a>
+            <a href="#target" class="hover:text-[#d4af37] hover:bg-white/5 transition px-5 py-3 text-sm mobile-link">For you</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="max-w-7xl mx-auto px-6 pt-16 pb-12 md:pt-24">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-12">
+        <div class="flex-1" data-aos="fade-right" data-aos-duration="800">
+          <span class="gold-text text-sm tracking-[0.2em] uppercase">Grow your small business</span>
+          <h1 class="text-4xl md:text-6xl font-bold mt-4 leading-tight">
+            Create your website <br /><span class="gold-text">in a day</span>
+          </h1>
+          <p class="text-xl text-gray-400 mt-6 max-w-xl">
+            We will get your new business online in a day. <br />
+            <strong class="text-white">Launch for &euro;100 (Euro)</strong> &mdash; domain &amp; email included.
+          </p>
+          <div class="flex flex-wrap gap-4 mt-8" data-aos="fade-up" data-aos-delay="200">
+            <a href="#steps" class="bg-gold text-black px-8 py-3 font-semibold rounded-md hover:bg-amber-400 transition shadow-xl text-lg">Get started &rarr;</a>
+            <a href="#compare" class="border border-gray-700 px-8 py-3 font-semibold rounded-md hover:border-[#d4af37] transition">See comparison</a>
+          </div>
+          <div class="flex gap-6 mt-10 text-gray-500 text-sm items-center" data-aos="fade-up" data-aos-delay="400">
+            <span><i class="fa-regular fa-circle-check gold-text"></i> 1000+ categories</span>
+            <span><i class="fa-regular fa-clock gold-text"></i> ready in 7 days</span>
+            <span><i class="fa-regular fa-gem gold-text"></i> no hidden fees</span>
+          </div>
+        </div>
+        <div class="flex-1 relative" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+          <div class="bg-[#111] p-8 rounded-2xl border border-gray-800 shadow-2xl">
+            <p class="text-3xl font-light gold-text">done-for-you</p>
+            <p class="mt-4 text-gray-300">
+              DIY builders give you a toolbox, not a finished website. Agencies are expensive.
+              <span class="text-white font-semibold">Refer Europe is the truly affordable done-for-you solution.</span>
+            </p>
+            <div class="grid grid-cols-2 gap-4 mt-8">
+              <div data-aos="zoom-in" data-aos-delay="300"><i class="fa-solid fa-cart-shopping gold-text"></i><span class="ml-2 text-sm">Sell anything</span></div>
+              <div data-aos="zoom-in" data-aos-delay="400"><i class="fa-solid fa-calendar-check gold-text"></i><span class="ml-2 text-sm">Take bookings</span></div>
+              <div data-aos="zoom-in" data-aos-delay="500"><i class="fa-solid fa-pen-nib gold-text"></i><span class="ml-2 text-sm">Design + copy</span></div>
+              <div data-aos="zoom-in" data-aos-delay="600"><i class="fa-solid fa-headset gold-text"></i><span class="ml-2 text-sm">VIP support</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPARISON ===== -->
+    <section id="compare" class="max-w-7xl mx-auto px-6 py-20 border-t border-gray-800">
+      <h2 class="text-3xl md:text-4xl font-light text-center" data-aos="fade-up">
+        Websites <span class="gold-text font-semibold">with</span> vs <span class="text-gray-500">without</span>
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8 mt-12">
+        <!-- with -->
+        <div class="card-black p-8 rounded-2xl" data-aos="fade-right" data-aos-duration="700">
+          <h3 class="text-2xl gold-text font-semibold flex items-center">
+            <i class="fa-regular fa-thumbs-up mr-3"></i> with Refer Europe
+          </h3>
+          <ul class="mt-6 space-y-4">
+            <li class="flex gap-3"><i class="fa-solid fa-check gold-text mt-1"></i><span>Built-for-you website</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-check gold-text mt-1"></i><span>VIP support</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-check gold-text mt-1"></i><span>Ready in a day &bull; Domain &amp; email included</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-check gold-text mt-1"></i><span>Design and copy</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-check gold-text mt-1"></i><span>Easy-to-use editor</span></li>
+          </ul>
+        </div>
+
+        <!-- pricing card -->
+        <div class="card-black p-8 rounded-2xl border-2 border-[#d4af37]/30 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="100">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-[#d4af37]/10 rounded-full blur-3xl"></div>
+          <div class="relative">
+            <div class="flex justify-between items-start">
+              <h3 class="text-3xl font-light">Ready to launch? <span class="gold-text font-bold">&euro;100</span></h3>
+            </div>
+            <p class="text-gray-400 mt-2 mb-6">Everything you need in one payment</p>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><i class="fa-solid fa-circle-check gold-text mt-1"></i><span><strong class="text-white">Website</strong> <span class="text-gray-400">&bull; fully built for you</span></span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-circle-check gold-text mt-1"></i><span><strong class="text-white">Domain</strong> <span class="text-gray-400">&bull; free for 1 year</span></span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-circle-check gold-text mt-1"></i><span><strong class="text-white">Email</strong> <span class="text-gray-400">&bull; professional address</span></span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-circle-check gold-text mt-1"></i><span><strong class="text-white">Design</strong> <span class="text-gray-400">&bull; custom made</span></span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-circle-check gold-text mt-1"></i><span><strong class="text-white">Copy</strong> <span class="text-gray-400">&bull; written for you</span></span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-circle-check gold-text mt-1"></i><span><strong class="text-white">Logo</strong> <span class="text-gray-400">&bull; professional design</span></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- without -->
+        <div class="card-black p-8 rounded-2xl border-red-900/30" data-aos="fade-left" data-aos-duration="700">
+          <h3 class="text-2xl text-gray-500 font-semibold flex items-center">
+            <i class="fa-regular fa-face-frown mr-3"></i> without Refer Europe
+          </h3>
+          <ul class="mt-6 space-y-4">
+            <li class="flex gap-3"><i class="fa-solid fa-xmark text-red-500 mt-1"></i><span>DIY confusion</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-xmark text-red-500 mt-1"></i><span>Weeks of effort</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-xmark text-red-500 mt-1"></i><span>Time wasting &bull; Risk &bull; Hidden fees</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-xmark text-red-500 mt-1"></i><span>Big agency fees</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-xmark text-red-500 mt-1"></i><span>No customer service / Giving up</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center text-gray-400 mt-8 text-sm" data-aos="fade-up" data-aos-delay="200">
+        Over 1,000 business categories served &ndash; from local to e-commerce.
+      </p>
+    </section>
+
+    <!-- ===== 2 STEPS ===== -->
+    <section id="steps" class="max-w-7xl mx-auto px-6 py-16">
+      <div class="text-center" data-aos="fade-up">
+        <span class="gold-text border border-[#d4af37] px-4 py-1 rounded-full text-xs tracking-wider">simple</span>
+        <h2 class="text-4xl font-bold mt-4">2 steps to launch your website</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-10 mt-16">
+        <div class="card-black p-8 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-6xl gold-text font-black mb-4">1</div>
+          <h3 class="text-2xl font-semibold">Complete our online questionnaire</h3>
+          <p class="text-gray-400 mt-2">Tell us about your business. Upload images, describe products &amp; services in detail.</p>
+          <div class="mt-6 bg-black p-4 rounded border border-gray-800">
+            <i class="fa-regular fa-file-lines gold-text"></i><span class="ml-2 text-sm">images, description, branding</span>
+          </div>
+        </div>
+        <div class="card-black p-8 rounded-xl" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-6xl gold-text font-black mb-4">2</div>
+          <h3 class="text-2xl font-semibold">Your new website goes live</h3>
+          <p class="text-gray-400 mt-2">In less than 7 days we deliver a professional website + Google listing. Easily edit on the go.</p>
+          <div class="mt-6 flex gap-2">
+            <span class="bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/40 px-3 py-1 text-sm rounded-full">domain</span>
+            <span class="bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/40 px-3 py-1 text-sm rounded-full">email</span>
+            <span class="bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/40 px-3 py-1 text-sm rounded-full">Google listing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY REFER EUROPE ===== -->
+    <section id="why" class="bg-[#0c0c0c] py-24 border-y border-gray-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center" data-aos="fade-up">
+          Why <span class="gold-text">Refer Europe</span>
+        </h2>
+        <p class="text-center text-gray-400 mt-2 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+          Because we help you grow your business &mdash; easy &amp; affordable
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+          <div class="card-black p-6 rounded-xl" data-aos="fade-up" data-aos-delay="0">
+            <i class="fa-solid fa-magnifying-glass text-3xl gold-text mb-4"></i>
+            <h3 class="text-xl font-semibold">Get found online</h3>
+            <p class="text-gray-400 text-sm mt-2">Reach new customers, sell products, get bookings. Starts with your website, extends beyond.</p>
+          </div>
+          <div class="card-black p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+            <i class="fa-regular fa-gem text-3xl gold-text mb-4"></i>
+            <h3 class="text-xl font-semibold">Build your brand</h3>
+            <p class="text-gray-400 text-sm mt-2">Free domain, business email, logo, advertising credit. Manage reputation from one hub.</p>
+          </div>
+          <div class="card-black p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+            <i class="fa-regular fa-clock text-3xl gold-text mb-4"></i>
+            <h3 class="text-xl font-semibold">Save time &amp; money</h3>
+            <p class="text-gray-400 text-sm mt-2">Agency quality at DIY price. No frustration, no big fees.</p>
+          </div>
+          <div class="card-black p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+            <i class="fa-solid fa-cart-shopping text-3xl gold-text mb-4"></i>
+            <h3 class="text-xl font-semibold">Sell everywhere</h3>
+            <p class="text-gray-400 text-sm mt-2">No commissions. Multi-item carts, flexible shipping, Google Shopping + FB/IG sync.</p>
+          </div>
+          <div class="card-black p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+            <i class="fa-solid fa-shop text-3xl gold-text mb-4"></i>
+            <h3 class="text-xl font-semibold">One-stop shop</h3>
+            <p class="text-gray-400 text-sm mt-2">Business Hub: website, email, reviews, social content, Google, Yelp, Facebook.</p>
+          </div>
+          <div class="card-black p-6 rounded-xl" data-aos="fade-up" data-aos-delay="300">
+            <i class="fa-solid fa-headset text-3xl gold-text mb-4"></i>
+            <h3 class="text-xl font-semibold">Quick support</h3>
+            <p class="text-gray-400 text-sm mt-2">We provide quick support. No bots, real people.</p>
+          </div>
+        </div>
+
+        <!-- easy/affordable banner -->
+        <div class="mt-16 bg-gradient-to-r from-[#1a1308] to-[#101010] p-8 rounded-2xl border border-[#d4af37]/30 flex flex-col md:flex-row justify-between items-center" data-aos="fade-up" data-aos-delay="200">
+          <div>
+            <p class="text-3xl font-light">We are <span class="gold-text font-bold">easy &amp; affordable</span></p>
+            <p class="text-gray-400 mt-1">Do it for you &middot; Quick support &middot; Get more business from day one</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TARGET ===== -->
+    <section id="target" class="max-w-7xl mx-auto px-6 py-20">
+      <div class="bg-black/50 p-10 rounded-3xl border border-gray-800" data-aos="fade-up">
+        <span class="gold-text text-sm">target reels / posts &ndash; coming soon</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2">
+          Perfect for <span class="gold-text">everyone</span>
+        </h2>
+        <div class="flex flex-wrap gap-3 mt-8 text-lg" data-aos="fade-up" data-aos-delay="100">
+          <span class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700">Portfolio (students/jobseekers)</span>
+          <span class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700">Sales / management roles</span>
+          <span class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700">Founders &amp; owners</span>
+          <span class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700">Startup companies</span>
+          <span class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700">Doctors</span>
+          <span class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700">MSME</span>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+          <div class="flex items-center gap-2 bg-[#111] p-3 rounded-lg border border-gray-800" data-aos="zoom-in" data-aos-delay="0">
+            <i class="fa-solid fa-globe gold-text"></i><span>Domain</span>
+          </div>
+          <div class="flex items-center gap-2 bg-[#111] p-3 rounded-lg" data-aos="zoom-in" data-aos-delay="50">
+            <i class="fa-solid fa-server gold-text"></i><span>Hosting</span>
+          </div>
+          <div class="flex items-center gap-2 bg-[#111] p-3 rounded-lg" data-aos="zoom-in" data-aos-delay="100">
+            <i class="fa-solid fa-lock gold-text"></i><span>SSL</span>
+          </div>
+          <div class="flex items-center gap-2 bg-[#111] p-3 rounded-lg" data-aos="zoom-in" data-aos-delay="150">
+            <i class="fa-solid fa-envelope gold-text"></i><span>Business Email</span>
+          </div>
+          <div class="flex items-center gap-2 bg-[#111] p-3 rounded-lg" data-aos="zoom-in" data-aos-delay="200">
+            <i class="fa-solid fa-star gold-text"></i><span>Logo</span>
+          </div>
+          <div class="flex items-center gap-2 bg-[#111] p-3 rounded-lg" data-aos="zoom-in" data-aos-delay="250">
+            <i class="fa-regular fa-address-card gold-text"></i><span>Business card</span>
+          </div>
+          <div class="flex items-center gap-2 bg-[#111] p-3 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
+            <i class="fa-regular fa-file gold-text"></i><span>Letter head</span>
+          </div>
+          <div class="flex items-center gap-2 bg-[#111] p-3 rounded-lg border-[#d4af37] border" data-aos="zoom-in" data-aos-delay="350">
+            <i class="fa-solid fa-bolt gold-text"></i><span>ready in a day</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contact" class="border-t border-gray-800 py-16 bg-black">
+      <div class="max-w-4xl mx-auto text-center px-6" data-aos="fade-up">
+        <div class="mt-8 flex flex-col md:flex-row gap-4 justify-center items-center">
+          <a href="mailto:care@refereurope.site" class="bg-gold text-black px-8 py-4 font-bold rounded-md text-xl hover:bg-amber-400 transition shadow-2xl">
+            <i class="fa-regular fa-envelope mr-2"></i>care@refereurope.site
+          </a>
+          <span class="text-gray-600">or</span>
+          <a href="https://www.refereurope.site" class="border border-[#d4af37] text-[#d4af37] px-8 py-4 font-bold rounded-md hover:bg-[#d4af37]/10 transition">
+            www.refereurope.site
+          </a>
+        </div>
+
+        <div class="mt-8 text-gray-400">
+          <p><i class="fa-regular fa-building mr-2"></i>Berlin, Germany</p>
+        </div>
+
+        <div class="flex justify-center gap-6 mt-8">
+          <a href="https://www.instagram.com/refer_europe?igsh=b3gzdDh3eG5wNG1k" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-[#d4af37] transition text-2xl">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/refereurope/about/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-[#d4af37] transition text-2xl">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+
+        <p class="mt-12 text-sm text-gray-600">&copy; Refer Europe &ndash; grow your small business. All rights reserved.</p>
+        <div class="flex justify-center gap-6 mt-6 text-gray-500">
+          <span><i class="fa-regular fa-circle-check"></i> built-for-you</span>
+          <span><i class="fa-regular fa-message"></i> VIP support</span>
+          <span><i class="fa-regular fa-calendar"></i> 7 days</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+      // ===== Initialize AOS =====
+      AOS.init({
+        duration: 700,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+      });
+
+      // ===== Navbar: hide on scroll down, show on scroll up =====
+      (function () {
+        var navbar = document.getElementById('navbar');
+        var lastScrollY = window.scrollY;
+        var ticking = false;
+
+        function onScroll() {
+          var currentScrollY = window.scrollY;
+
+          // Close mobile menu on any scroll
+          closeMobileMenu();
+
+          if (currentScrollY > 80) {
+            if (currentScrollY > lastScrollY) {
+              // Scrolling down -> hide
+              navbar.classList.remove('nav-visible');
+              navbar.classList.add('nav-hidden');
+            } else {
+              // Scrolling up -> show
+              navbar.classList.remove('nav-hidden');
+              navbar.classList.add('nav-visible');
+            }
+          } else {
+            // At the top -> always visible
+            navbar.classList.remove('nav-hidden');
+            navbar.classList.add('nav-visible');
+          }
+
+          lastScrollY = currentScrollY;
+          ticking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+          if (!ticking) {
+            window.requestAnimationFrame(onScroll);
+            ticking = true;
+          }
+        });
+      })();
+
+      // ===== Hamburger menu toggle =====
+      var hamburgerBtn = document.getElementById('hamburger-btn');
+      var mobileMenu = document.getElementById('mobile-menu');
+      var menuOpen = false;
+
+      function closeMobileMenu() {
+        if (menuOpen) {
+          mobileMenu.classList.remove('open');
+          hamburgerBtn.classList.remove('active');
+          var icon = hamburgerBtn.querySelector('i');
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+          menuOpen = false;
+        }
+      }
+
+      function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        hamburgerBtn.classList.add('active');
+        var icon = hamburgerBtn.querySelector('i');
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+        menuOpen = true;
+      }
+
+      hamburgerBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (menuOpen) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      // Close on scroll
+      window.addEventListener('scroll', function () {
+        closeMobileMenu();
+      }, { passive: true });
+
+      // Close when a link is clicked
+      var mobileLinks = document.querySelectorAll('.mobile-link');
+      mobileLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          closeMobileMenu();
+        });
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', function (e) {
+        if (menuOpen && !mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
+    </script>
+  </body>
+</html>
