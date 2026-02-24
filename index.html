@@ -27,12 +27,56 @@
         font-weight: 400;
         font-style: normal;
       }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        background-color: #0a0a0a;
-      }
+       /* ── Reset & Base ─────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      /* Use Home section gold color as the site's primary color (no green) */
+      --bg: #0a0a0a;
+      --bg-card: #141414;
+      --fg: #ebebeb;
+      --fg-muted: #8a8a8a;
+      --fg-secondary: #c5c5c5;
+      --primary: #d4af37; /* gold from Home */
+      --primary-fg: #0a0a0a;
+      --primary-10: rgba(212,175,55,0.08);
+      --primary-30: rgba(212,175,55,0.28);
+      --border: #262626;
+      --secondary-bg: #1a1a1a;
+      --radius: 1rem;
+      --radius-sm: 0.5rem;
+    }
+
+    /* Simple container utility used by a few sections for consistent width */
+    .container {
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Lightweight animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
+
+    .animate-fade-up { animation: fadeInUp 0.7s ease both; }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+    .btn-cta { box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    /* Ensure nav and mobile links follow primary (gold) on hover */
+    #navbar a, #mobile-menu a { color: inherit; transition: color 0.18s ease; }
+    #navbar a:hover, #mobile-menu a:hover, .hover-gold:hover { color: var(--primary); }
       .gold-text {
         color: #d4af37;
       }
@@ -112,6 +156,322 @@
       #hamburger-btn.active i {
         transform: rotate(90deg);
       }
+       /* ── Section Shared ───────────────────────────── */
+    .section {
+      padding: 5rem 0;
+    }
+
+    @media (min-width: 768px) {
+      .section { padding: 7rem 0; }
+    }
+
+    @media (min-width: 1024px) {
+      .section { padding: 8rem 0; }
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--fg);
+      margin-bottom: 1.5rem;
+      text-wrap: balance;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 640px) {
+      .section-title { font-size: 2.25rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .section-title { font-size: 3rem; }
+    }
+
+    .section-desc {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--fg-muted);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── About Section ────────────────────────────── */
+    .about-header {
+      max-width: 48rem;
+      margin-bottom: 4rem;
+    }
+
+    .industry-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 5rem;
+    }
+
+    .tag {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.875rem;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      background: var(--secondary-bg);
+      color: var(--fg-secondary);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .tag:hover {
+      border-color: var(--primary-30);
+      color: var(--primary);
+    }
+
+    .cards-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .cards-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: var(--primary-30); }
+
+    @media (min-width: 768px) {
+      .card--values { grid-column: span 2; }
+    }
+
+    @media (min-width: 1024px) {
+      .card--values { grid-column: span 1; }
+    }
+
+    .card-icon {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      background: var(--primary-10);
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      stroke: var(--primary);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      line-height: 1.7;
+      color: var(--fg-muted);
+    }
+
+    /* ── Testimonials ─────────────────────────────── */
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .testimonials-header .section-desc {
+      max-width: 40rem;
+      margin: 0 auto;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    @media (min-width: 640px) {
+      .testimonial-card { padding: 2rem; }
+    }
+
+    .testimonial-card:hover { border-color: var(--primary-30); }
+
+    .stars {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .stars svg {
+      width: 1rem;
+      height: 1rem;
+      fill: var(--primary);
+      stroke: var(--primary);
+    }
+
+    .testimonial-quote {
+      flex: 1;
+      line-height: 1.7;
+      color: var(--fg-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--primary-10);
+      color: var(--primary);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .author-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    .author-role {
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+    }
+
+    /* ── FAQ ───────────────────────────────────────── */
+    .faq-layout {
+      display: grid;
+      gap: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      .faq-layout {
+        grid-template-columns: 2fr 3fr;
+        gap: 4rem;
+      }
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1.25rem 0;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--fg);
+      transition: color 0.2s;
+      font-family: inherit;
+      gap: 1rem;
+    }
+
+    .faq-trigger:hover { color: var(--primary); }
+
+    .faq-trigger svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+      stroke: var(--fg-muted);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-trigger svg {
+      transform: rotate(180deg);
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-content {
+      max-height: 300px;
+    }
+
+    .faq-answer {
+      padding-bottom: 1.25rem;
+      line-height: 1.7;
+      color: var(--fg-muted);
+    }
+    .faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
     </style>
   </head>
 
@@ -204,7 +564,7 @@
           >
             <a
               href="#steps"
-              class="bg-gold text-black px-8 py-3 font-semibold rounded-md hover:bg-amber-400 transition shadow-xl text-lg"
+              class="bg-gold text-black px-8 py-3 font-semibold rounded-md hover:bg-amber-400 transition shadow-xl text-lg btn-cta animate-fade-up"
               >Get started &rarr;</a
             >
             <a
@@ -241,7 +601,7 @@
           <div
             class="bg-[#111] p-8 rounded-2xl border border-gray-800 shadow-2xl"
           >
-            <p class="text-3xl font-light gold-text">done-for-you</p>
+            <p class="text-3xl font-light gold-text">Done-For-You</p>
             <p class="mt-4 text-gray-300">
               DIY builders give you a toolbox, not a finished website. Agencies
               are expensive.
@@ -283,7 +643,7 @@
         data-aos="fade-up"
       >
         Websites <span class="gold-text font-semibold">with</span> vs
-        <span class="text-gray-500">without</span>
+        Without
       </h2>
       <div class="grid md:grid-cols-3 gap-8 mt-12">
         <!-- with -->
@@ -293,7 +653,7 @@
           data-aos-duration="700"
         >
           <h3 class="text-2xl gold-text font-semibold flex items-center">
-            <i class="fa-regular fa-thumbs-up mr-3"></i> with Refer Europe
+            <i class="fa-regular fa-thumbs-up mr-3"></i> With Refer Europe
           </h3>
           <ul class="mt-6 space-y-4">
             <li class="flex gap-3">
@@ -327,7 +687,7 @@
           data-aos-delay="100"
         >
           <div
-            class="absolute top-0 right-0 w-32 h-32 bg-[#d4af37]/10 rounded-full blur-3xl"
+            class="absolute top-0 right-0 w-32 h-32 bg-[#d4af37]/10 rounded-full blur-3xl animate-float"
           ></div>
           <div class="relative">
             <div class="flex justify-between items-start">
@@ -345,7 +705,7 @@
                 ><span
                   ><strong class="text-white">Website</strong>
                   <span class="text-gray-400"
-                    >&bull; fully built for you</span
+                    >&bull; Fully Built for you</span
                   ></span
                 >
               </li>
@@ -354,7 +714,7 @@
                 ><span
                   ><strong class="text-white">Domain</strong>
                   <span class="text-gray-400"
-                    >&bull; free for 1 year</span
+                    >&bull; Free for 1 year</span
                   ></span
                 >
               </li>
@@ -363,7 +723,7 @@
                 ><span
                   ><strong class="text-white">Email</strong>
                   <span class="text-gray-400"
-                    >&bull; professional address</span
+                    >&bull; Professional Address</span
                   ></span
                 >
               </li>
@@ -371,7 +731,7 @@
                 <i class="fa-solid fa-circle-check gold-text mt-1"></i
                 ><span
                   ><strong class="text-white">Design</strong>
-                  <span class="text-gray-400">&bull; custom made</span></span
+                  <span class="text-gray-400">&bull; Custom Made</span></span
                 >
               </li>
               <li class="flex gap-3">
@@ -379,7 +739,7 @@
                 ><span
                   ><strong class="text-white">Copy</strong>
                   <span class="text-gray-400"
-                    >&bull; written for you</span
+                    >&bull; Written for you</span
                   ></span
                 >
               </li>
@@ -388,7 +748,7 @@
                 ><span
                   ><strong class="text-white">Logo</strong>
                   <span class="text-gray-400"
-                    >&bull; professional design</span
+                    >&bull; Professional Design</span
                   ></span
                 >
               </li>
@@ -402,8 +762,8 @@
           data-aos="fade-left"
           data-aos-duration="700"
         >
-          <h3 class="text-2xl text-gray-500 font-semibold flex items-center">
-            <i class="fa-regular fa-face-frown mr-3"></i> without Refer Europe
+          <h3 class="text-2xl gold-text  font-semibold flex items-center">
+            <i class="fa-regular fa-face-frown mr-3"></i> Without Refer Europe
           </h3>
           <ul class="mt-6 space-y-4">
             <li class="flex gap-3">
@@ -463,7 +823,7 @@
           </p>
           <div class="mt-6 bg-black p-4 rounded border border-gray-800">
             <i class="fa-regular fa-file-lines gold-text"></i
-            ><span class="ml-2 text-sm">images, description, branding</span>
+            ><span class="ml-2 text-sm">Images, Description, Branding</span>
           </div>
         </div>
         <div
@@ -480,15 +840,15 @@
           <div class="mt-6 flex gap-2">
             <span
               class="bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/40 px-3 py-1 text-sm rounded-full"
-              >domain</span
+              >Domain</span
             >
             <span
               class="bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/40 px-3 py-1 text-sm rounded-full"
-              >email</span
+              >Email</span
             >
             <span
               class="bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/40 px-3 py-1 text-sm rounded-full"
-              >Google listing</span
+              >Google Listing</span
             >
           </div>
         </div>
@@ -608,9 +968,6 @@
         class="bg-black/50 p-10 rounded-3xl border border-gray-800"
         data-aos="fade-up"
       >
-        <span class="gold-text text-sm"
-          >target reels / posts &ndash; coming soon</span
-        >
         <h2 class="text-3xl md:text-4xl font-bold mt-2">
           Perfect for <span class="gold-text">everyone</span>
         </h2>
@@ -643,6 +1000,33 @@
             class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700"
             >MSME</span
           >
+          <span
+    class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700"
+    >Coffee shops</span
+  >
+  <span
+    class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700"
+    >Hospitals & Clinics</span
+  >
+  <span
+    class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700"
+    >Restaurants & Cafes</span
+  >
+ 
+ 
+ 
+  <span
+    class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700"
+    >IT & Software companies</span
+  >
+  <span
+    class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700"
+    >Educational institutions</span
+  >
+  <span
+    class="bg-[#1f1f1f] px-5 py-2 rounded-full border border-gray-700"
+    >Freelancers & Consultants</span
+  >
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
@@ -703,12 +1087,288 @@
             data-aos-delay="350"
           >
             <i class="fa-solid fa-bolt gold-text"></i
-            ><span>ready in a day</span>
+            ><span>Ready in a day</span>
+          </div>
+        </div>
+      </div>
+    </section>
+      <!-- ── About Section ───────────────────────────── -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container w-[80%] mx-auto">
+        <div class="about-header">
+          <p class="section-label text-2xl lg:text-5xl ">About Us</p>
+          <h2 class="section-title" id="about-title">Empowering businesses across every industry</h2>
+          <p class="section-desc">
+            We are a passionate team of strategists, designers, and developers
+            dedicated to helping businesses of all sizes achieve their digital
+            goals. From local coffee shops to large-scale IT firms, we deliver
+            tailored solutions that drive real results.
+          </p>
+        </div>
+
+        <div class="industry-tags" role="list" aria-label="Industries we serve">
+          <span class="tag" role="listitem">Coffee shops</span>
+          <span class="tag" role="listitem">Hospitals &amp; Clinics</span>
+          <span class="tag" role="listitem">Restaurants &amp; Cafes</span>
+          <span class="tag" role="listitem">Retail stores</span>
+          <span class="tag" role="listitem">Real estate</span>
+          <span class="tag" role="listitem">Construction firms</span>
+          <span class="tag" role="listitem">IT &amp; Software companies</span>
+          <span class="tag" role="listitem">Educational institutions</span>
+          <span class="tag" role="listitem">Freelancers &amp; Consultants</span>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Vision -->
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3>Our Vision</h3>
+            <p>
+              To be the most trusted digital partner for businesses worldwide,
+              pioneering innovative solutions that transform ideas into
+              impactful digital experiences and set new standards for excellence.
+            </p>
+          </div>
+
+          <!-- Mission -->
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            </div>
+            <h3>Our Mission</h3>
+            <p>
+              To empower businesses with cutting-edge technology, creative
+              design, and data-driven strategies. We are committed to
+              delivering measurable growth and building lasting partnerships
+              with every client we serve.
+            </p>
+          </div>
+
+          <!-- Values -->
+          <div class="card card--values">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <h3>Our Values</h3>
+            <p>
+              Integrity, innovation, and impact guide everything we do. We
+              believe in transparent communication, continuous improvement, and
+              putting our clients' success at the heart of every decision.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
+    <div class="container"><hr class="divider" /></div>
+
+    <!-- ── Testimonials Section ────────────────────── -->
+    <section id="testimonials" class="section" aria-labelledby="testimonials-title">
+      <div class="container w-[80%] mx-auto">
+        <div class="testimonials-header">
+          <p class="section-label  text-2xl lg:text-5xl">Testimonials</p>
+          <h2 class="section-title" id="testimonials-title">Trusted by businesses everywhere</h2>
+          <p class="section-desc">
+            Don't just take our word for it. Here's what our clients
+            have to say about working with us.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+
+          <div class="testimonial-card">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-quote">"They transformed our online presence completely. Our website now truly reflects the warm, inviting experience of our coffee shop. Online orders increased by 40% within the first month."</p>
+            <div class="testimonial-author">
+              <div class="avatar">SM</div>
+              <div>
+                <p class="author-name">Sarah Mitchell</p>
+                <p class="author-role">Owner, Brew &amp; Bean Coffee</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-quote">"The patient portal they built streamlined our appointment booking process incredibly. Our staff saves hours every week, and patients love the seamless experience."</p>
+            <div class="testimonial-author">
+              <div class="avatar">RP</div>
+              <div>
+                <p class="author-name">Dr. Rajesh Patel</p>
+                <p class="author-role">Director, HealthFirst Clinic</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-quote">"Working with this team was a game-changer for our SaaS platform. Their attention to detail, technical expertise, and commitment to deadlines made the entire process smooth."</p>
+            <div class="testimonial-author">
+              <div class="avatar">AC</div>
+              <div>
+                <p class="author-name">Amanda Chen</p>
+                <p class="author-role">CEO, TechNova Solutions</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-quote">"Our project management dashboard has never been better. They understood our workflow challenges and delivered a solution that our entire team actually enjoys using."</p>
+            <div class="testimonial-author">
+              <div class="avatar">MJ</div>
+              <div>
+                <p class="author-name">Marcus Johnson</p>
+                <p class="author-role">Founder, UrbanBuild Construction</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-quote">"The e-learning platform they developed exceeded our expectations. Students and teachers alike find it intuitive, and our enrollment has grown significantly since launch."</p>
+            <div class="testimonial-author">
+              <div class="avatar">ER</div>
+              <div>
+                <p class="author-name">Elena Rodriguez</p>
+                <p class="author-role">Principal, Bright Minds Academy</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-quote">"As a solo consultant, I needed a professional website that could generate leads while I focus on client work. They delivered exactly that, and the results speak for themselves."</p>
+            <div class="testimonial-author">
+              <div class="avatar">DK</div>
+              <div>
+                <p class="author-name">David Kim</p>
+                <p class="author-role">Freelance Consultant</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><hr class="divider" /></div>
+
+    <!-- ── FAQ Section ─────────────────────────────── -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="container w-[80%] mx-auto">
+        <div class="faq-layout">
+          <div>
+            <p class="section-label text-2xl lg:text-5xl">FAQ</p>
+            <h2 class="section-title" id="faq-title" style="font-size:1.875rem;">Frequently asked questions</h2>
+            <p style="line-height:1.7;color:var(--fg-muted);">
+              Have a different question? Reach out to our team and we'll
+              get back to you within 24 hours.
+            </p>
+          </div>
+
+          <div>
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>What industries do you work with?</span>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-content">
+                <p class="faq-answer">We work with a wide range of industries including coffee shops, hospitals &amp; clinics, restaurants &amp; cafes, retail stores, real estate, construction firms, IT &amp; software companies, educational institutions, and freelancers &amp; consultants. Our solutions are tailored to meet the unique needs of each sector.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>How long does a typical project take?</span>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-content">
+                <p class="faq-answer">Project timelines vary based on scope and complexity. A simple website typically takes 2-4 weeks, while more complex applications can take 2-3 months. We provide detailed timelines during our initial consultation and keep you updated throughout every phase of development.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>Do you offer ongoing support after launch?</span>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-content">
+                <p class="faq-answer">Absolutely. We offer comprehensive post-launch support packages that include maintenance, updates, performance monitoring, and technical assistance. Our team is always available to ensure your digital presence continues to perform at its best.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>What is your pricing model?</span>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-content">
+                <p class="faq-answer">We offer flexible pricing models including fixed-price projects, hourly rates, and retainer agreements. During our discovery call, we'll understand your requirements and recommend the most cost-effective approach for your specific needs and budget.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>Can you help with branding and design?</span>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-content">
+                <p class="faq-answer">Yes, we provide end-to-end branding and design services including logo design, brand identity, UI/UX design, and marketing collateral. Our creative team ensures every visual element aligns with your brand's personality and resonates with your target audience.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>How do you ensure the quality of your work?</span>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-content">
+                <p class="faq-answer">Quality is at the core of our process. We follow industry best practices, conduct thorough testing at every stage, perform code reviews, and involve clients in regular feedback loops. Every project goes through rigorous QA before delivery.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- ===== FOOTER ===== -->
     <footer id="contact" class="border-t border-gray-800 py-16 bg-black">
       <div class="max-w-4xl mx-auto text-center px-6" data-aos="fade-up">
@@ -721,7 +1381,7 @@
           >
             <i class="fa-regular fa-envelope mr-2"></i>care@refereurope.site
           </a>
-          <span class="text-gray-600">or</span>
+          or
           <a
             href="https://www.refereurope.site"
             class="border border-[#d4af37] text-[#d4af37] px-8 py-4 font-bold rounded-md hover:bg-[#d4af37]/10 transition"
@@ -730,7 +1390,7 @@
           </a>
         </div>
 
-        <div class="mt-8 text-gray-400">
+        <div class="mt-8 ">
           <p><i class="fa-regular fa-building mr-2"></i>Berlin, Germany</p>
         </div>
 
@@ -739,7 +1399,7 @@
             href="https://www.instagram.com/refer_europe?igsh=b3gzdDh3eG5wNG1k"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-500 hover:text-[#d4af37] transition text-2xl"
+            class="hover:text-[#d4af37] transition text-2xl"
           >
             <i class="fab fa-instagram"></i>
           </a>
@@ -747,18 +1407,18 @@
             href="https://www.linkedin.com/company/refereurope/about/"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-500 hover:text-[#d4af37] transition text-2xl"
+            class="hover:text-[#d4af37] transition text-2xl"
           >
             <i class="fab fa-linkedin-in"></i>
           </a>
         </div>
 
-        <p class="mt-12 text-sm text-gray-600">
+        <p class="mt-12 text-m">
           &copy; Refer Europe &ndash; grow your small business. All rights
           reserved.
         </p>
-        <div class="flex justify-center gap-6 mt-6 text-gray-500">
-          <span><i class="fa-regular fa-circle-check"></i> built-for-you</span>
+        <div class="flex justify-center gap-6 mt-6">
+          <span><i class="fa-regular fa-circle-check"></i> Built-for-you</span>
           <span><i class="fa-regular fa-message"></i> VIP support</span>
           <span><i class="fa-regular fa-calendar"></i> 7 days</span>
         </div>
@@ -879,5 +1539,25 @@
         }
       });
     </script>
+    <script>
+  document.querySelectorAll('.faq-trigger').forEach(button => {
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      
+      // Close all items (optional – remove this block if you want multiple open)
+      document.querySelectorAll('.faq-trigger').forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.nextElementSibling.style.maxHeight = null;
+      });
+
+      // Toggle current
+      if (!expanded) {
+        button.setAttribute('aria-expanded', 'true');
+        const content = button.nextElementSibling;
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  });
+</script>
   </body>
 </html>
