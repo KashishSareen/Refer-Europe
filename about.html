@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Refer Europe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+
+  <body class="text-gray-200 antialiased">
+    <!-- ===== NAVIGATION (same as index) ===== -->
+    <nav
+      id="navbar"
+      class="border-b border-gray-800 bg-black/80 backdrop-blur-sm sticky top-0 z-50"
+    >
+      <div
+        class="relative max-w-7xl h-[10vh] mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <div
+          class="bg-[url('/images/logoeurope.png')] bg-contain bg-center bg-no-repeat w-[120px] h-[60px] mt-2"
+        ></div>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-8 text-sm">
+          <li><a href="index.html" class="hover:text-[#d4af37] transition">Home</a></li>
+          <li><a href="about.html" class="hover:text-[#d4af37] transition">About Us</a></li>
+          <li><a href="index.html#why" class="hover:text-[#d4af37] transition">Blog</a></li>
+          <li><a href="index.html#steps" class="hover:text-[#d4af37] transition">Services</a></li>
+          <li><a href="index.html#target" class="hover:text-[#d4af37] transition">Contact</a></li>
+        </ul>
+
+        <!-- Hamburger Button -->
+        <button
+          id="hamburger-btn"
+          class="md:hidden text-white text-2xl focus:outline-none z-50 w-10 h-10 flex items-center justify-center"
+          aria-label="Toggle menu"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Mobile Menu: compact, right-aligned dropdown -->
+        <div
+          id="mobile-menu"
+          class="absolute right-6 top-full mt-2 w-48 bg-[#111] border border-gray-800 rounded-xl shadow-2xl shadow-black/50 md:hidden"
+        >
+          <div class="flex flex-col py-3">
+            <a href="index.html" class="hover:text-[#d4af37] hover:bg-white/5 transition px-5 py-3 text-sm mobile-link">Home</a>
+            <a href="index.html#why" class="hover:text-[#d4af37] hover:bg-white/5 transition px-5 py-3 text-sm mobile-link">Why</a>
+            <a href="index.html#steps" class="hover:text-[#d4af37] hover:bg-white/5 transition px-5 py-3 text-sm mobile-link">Steps</a>
+            <a href="index.html#target" class="hover:text-[#d4af37] hover:bg-white/5 transition px-5 py-3 text-sm mobile-link">For you</a>
+            <a href="about.html" class="hover:text-[#d4af37] hover:bg-white/5 transition px-5 py-3 text-sm mobile-link">About Us</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== ABOUT CONTENT ===== -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container lg:w-[80%] mx-auto  ">
+        <div class="about-header  lg:w-[80%] mx-auto  " data-aos="fade-up">
+          <p class="section-label text-2xl lg:text-5xl text-center ">About Us</p>
+          <h2 class="section-title text-center" id="about-title">Empowering businesses across every industry</h2>
+          <p class="section-desc text-center">
+            We are a passionate team of strategists, designers, and developers
+            dedicated to helping businesses of all sizes achieve their digital
+            goals. From local coffee shops to large-scale IT firms, we deliver
+            tailored solutions that drive real results.
+          </p>
+        </div>
+
+        <div class="industry-tags" role="list" aria-label="Industries we serve"  data-aos="fade-up"
+          data-aos-delay="100">
+          <span class="tag" role="listitem">Coffee shops</span>
+          <span class="tag" role="listitem">Hospitals &amp; Clinics</span>
+          <span class="tag" role="listitem">Restaurants &amp; Cafes</span>
+          <span class="tag" role="listitem">Retail stores</span>
+          <span class="tag" role="listitem">Real estate</span>
+          <span class="tag" role="listitem">Construction firms</span>
+          <span class="tag" role="listitem">IT &amp; Software companies</span>
+          <span class="tag" role="listitem">Educational institutions</span>
+          <span class="tag" role="listitem">Freelancers &amp; Consultants</span>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Vision -->
+          <div class="card"data-aos="fade-right"
+          data-aos-duration="700" >
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3>Our Vision</h3>
+            <p>
+              To be the most trusted digital partner for businesses worldwide,
+              pioneering innovative solutions that transform ideas into
+              impactful digital experiences and set new standards for excellence.
+            </p>
+          </div>
+
+          <!-- Mission -->
+          <div class="card" data-aos="zoom-in"
+          data-aos-duration="700"
+          data-aos-delay="100">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            </div>
+            <h3>Our Mission</h3>
+            <p>
+              To empower businesses with cutting-edge technology, creative
+              design, and data-driven strategies. We are committed to
+              delivering measurable growth and building lasting partnerships
+              with every client we serve.
+            </p>
+          </div>
+
+          <!-- Values -->
+          <div class="card card--values"  data-aos="fade-left"
+          data-aos-duration="700">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <h3>Our Values</h3>
+            <p>
+              Integrity, innovation, and impact guide everything we do. We
+              believe in transparent communication, continuous improvement, and
+              putting our clients' success at the heart of every decision.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><hr class="divider" /></div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contact" class="border-t border-gray-800 py-16 bg-black">
+      <div class="max-w-4xl mx-auto text-center px-6" data-aos="fade-up">
+        <div
+          class="mt-8 flex flex-col md:flex-row gap-4 justify-center items-center"
+        >
+          <a
+            href="mailto:care@refereurope.site"
+            class="bg-gold text-black px-8 py-4 font-bold rounded-md text-xl hover:bg-amber-400 transition shadow-2xl"
+          >
+            <i class="fa-regular fa-envelope mr-2"></i>care@refereurope.site
+          </a>
+          or
+          <a
+            href="https://www.refereurope.site"
+            class="border border-[#d4af37] text-[#d4af37] px-8 py-4 font-bold rounded-md hover:bg-[#d4af37]/10 transition"
+          >
+            www.refereurope.site
+          </a>
+        </div>
+
+        <div class="mt-8 ">
+          <p><i class="fa-regular fa-building mr-2"></i>Berlin, Germany</p>
+        </div>
+
+        <div class="flex justify-center gap-6 mt-8">
+          <a
+            href="https://www.instagram.com/refer_europe?igsh=b3gzdDh3eG5wNG1k"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-[#d4af37] transition text-2xl"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/company/refereurope/about/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-[#d4af37] transition text-2xl"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+
+        <p class="mt-12 text-m">
+          &copy; Refer Europe &ndash; grow your small business. All rights
+          reserved.
+        </p>
+        <div class="flex justify-center gap-6 mt-6">
+          <span><i class="fa-regular fa-circle-check"></i> Built-for-you</span>
+          <span><i class="fa-regular fa-message"></i> VIP support</span>
+          <span><i class="fa-regular fa-calendar"></i> 7 days</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
