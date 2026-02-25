@@ -108,4 +108,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ===== Debug: detect horizontal overflow elements =====
+  function reportOverflow() {
+    try {
+      var w = window.innerWidth || document.documentElement.clientWidth;
+      var els = Array.from(document.querySelectorAll('body *'));
+      var offenders = els.filter(function (el) {
+        var rect = el.getBoundingClientRect();
+        return rect.right > w + 1; // slight tolerance
+      });
+      if (offenders.length) {
+        console.warn('Overflowing elements (right > viewport):', offenders);
+        offenders.forEach(function (el) { el.style.outline = '2px solid rgba(255,0,0,0.6)'; });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  // Run on load and resize to help find cause of horizontal scroll
+  reportOverflow();
+  window.addEventListener('resize', function () { reportOverflow(); });
+
 });
